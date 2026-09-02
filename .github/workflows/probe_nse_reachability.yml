@@ -1,0 +1,66 @@
+# Ye ek EXPERIMENT hai, pipeline nahi.
+#
+# Sawal: GitHub ke runner (US ka IP) se NSE ka data milta hai ya nahi? NSE cloud
+# IP block karne ke liye jaana jaata hai. Agar nahi milta to poora "laptop hatao"
+# plan hi badal jaata hai -- isliye andaaza lagane ke bajaye pehle ye chalayenge.
+#
+# Har source alag se test hota hai aur apna HTTP status chhapta hai. Koi step
+# fail hone par bhi baaki chalte hain (|| true), kyunki hume POORI tasveer chahiye,
+# pehli rukawat nahi.
+name: probe - kya NSE GitHub ke server se khulta hai
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runner kahan baitha hai
+        run: |
+          echo "--- runner ka public IP aur mulk ---"
+          curl -sS --max-time 20 https://ipinfo.io/json || echo "ipinfo nahi mila"
+
+      - name: 1. NSE UDiFF bhavcopy (engine ka PRIMARY source)
+        run: |
+          for D in 20260902 20260901 20260828; do
+            URL="https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_${D}_F_0000.csv.zip"
+            CODE=$(curl -sS -o "/tmp/bc_$D.zip" -w '%{http_code}' --max-time 45 \
+              -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)' \
+              -H 'Accept: */*' \
+              -H 'Referer: https://www.nseindia.com/' \
+              "$URL" || echo "000")
+            SIZE=$(stat -c%s "/tmp/bc_$D.zip" 2>/dev/null || echo 0)
+            echo "  $D -> HTTP $CODE, $SIZE bytes"
+          done
+
+      - name: 2. sec_bhavdata_full (delivery quantity)
+        run: |
+          URL="https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_02092026.csv"
+          CODE=$(curl -sS -o /tmp/deliv.csv -w '%{http_code}' --max-time 45 \
+            -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)' \
+            -H 'Referer: https://www.nseindia.com/' "$URL" || echo "000")
+          echo "  HTTP $CODE, $(stat -c%s /tmp/deliv.csv 2>/dev/null || echo 0) bytes"
+
+      - name: 3. niftyindices constituents (sector map ka free source)
+        run: |
+          URL="https://niftyindices.com/IndexConstituent/ind_niftytotalmarket_list.csv"
+          CODE=$(curl -sS -o /tmp/tm.csv -w '%{http_code}' --max-time 45 \
+            -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)' "$URL" || echo "000")
+          echo "  HTTP $CODE, $(stat -c%s /tmp/tm.csv 2>/dev/null || echo 0) bytes"
+
+      - name: 4. www.nseindia.com API (cookie ke saath)
+        run: |
+          curl -sS -c /tmp/ck.txt -o /dev/null --max-time 30 \
+            -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)' \
+            https://www.nseindia.com/ || true
+          CODE=$(curl -sS -b /tmp/ck.txt -o /tmp/ca.json -w '%{http_code}' --max-time 45 \
+            -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)' \
+            -H 'Referer: https://www.nseindia.com/' \
+            'https://www.nseindia.com/api/corporates-corporateActions?index=equities' || echo "000")
+          echo "  HTTP $CODE, $(stat -c%s /tmp/ca.json 2>/dev/null || echo 0) bytes"
+
+      - name: 5. Faisla
+        run: |
+          echo "Upar ka har HTTP 200 + thoda size = wo source cloud se milta hai."
+          echo "403 / 401 / 000 = NSE ne GitHub ka IP block kiya."
