@@ -6,11 +6,11 @@
   "bootstrapped_from": "D:\\VAJRA_DATA",
   "event_calendar_rows": 36527,
   "first_session": "2024-08-28",
-  "last_run_utc": "2026-09-03T12:42:47+00:00",
+  "last_run_utc": "2026-09-03T16:30:28+00:00",
   "last_session": "2026-09-03",
   "prices_are": "ADJUSTED through adjusted_through; live rows appended later are AS-TRADED",
   "rows": 1087585,
-  "rows_appended_last_run": 2560,
+  "rows_appended_last_run": 0,
   "securities": 2672,
   "sessions": 500
 }
