@@ -97,4 +97,4 @@ Cloud sakht disha me hai — naam **chhodta** hai, **jodta** nahi.
 | NSE ne block kar diya | `probe_nse_reachability.yml` chalao. 403/000 aaye to NSE ne cloud IP band kiya |
 | 60 din koi commit nahi hua | GitHub scheduled workflow apne aap band kar deta hai. Actions tab se dobara enable karo |
 
-Poora system samajhna ho to `D:\VAJRA_CONTROL\START_HERE.md` padho.
+Poora system samajhna ho to `D:\VAJRA SYSTEM GATE\00_START_HERE.md` padho.
