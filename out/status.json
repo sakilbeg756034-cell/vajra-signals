@@ -1,26 +1,28 @@
 {
   "as_of_session": "2026-09-03",
-  "generated_at_utc": "2026-09-03T12:01:07+00:00",
+  "generated_at_utc": "2026-09-03T12:42:47+00:00",
   "built_by": "laptop",
-  "universe_rows": 731,
-  "eligible": 711,
+  "universe_rows": 735,
+  "eligible": 735,
   "n_holdings": 12,
   "exit_rank": 36,
   "top_symbols": [
     "CUPID",
     "STLTECH",
+    "SIGMAADV",
     "MTARTECH",
     "ATHERENERG",
+    "INDSWFTLAB",
     "SBC",
     "WELCORP",
     "SANSERA",
     "BLISSGVS",
     "RPEL",
-    "CPPLUS",
-    "RPTECH",
-    "HAPPYFORGE"
+    "CPPLUS"
   ],
-  "sessions_added_this_run": [],
+  "sessions_added_this_run": [
+    "2026-09-03"
+  ],
   "holidays_or_unpublished": [],
   "corporate_action_events_known": 37446,
   "reference_names_known": 2566
