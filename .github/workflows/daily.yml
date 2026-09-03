@@ -1,0 +1,69 @@
+# Roz ka signal build. Laptop yahan kahin nahi aata.
+#
+# Ye is baat par tika hai ki NSE GitHub ke server ko jawab deta hai. Wo maana
+# nahi gaya -- 2026-09-03 ko probe chala kar dekha gaya: Phoenix ke runner se
+# bhavcopy, delivery data, niftyindices aur corporate action API, chaaron HTTP
+# 200. Probe workflow repo me hi rakha hai taaki NSE kabhi block kare to sawal
+# dobara poocha ja sake.
+#
+# Laptop mahine bhar band reh sakta hai, isliye ye run kisi laptop-run ka
+# intezaar nahi karta. Saari jaanch isi run me hoti hai (daily.py ke gates), aur
+# fail hone par run RED hota hai -- tab purani out/ file waisi ki waisi rehti
+# hai. Galat nayi file likhne se purani sahi file behtar hai.
+name: roz ka signal
+
+on:
+  schedule:
+    # 14:35 UTC = 20:05 IST. NSE 15:30 IST par band hota hai aur bhavcopy
+    # ~18:00-19:00 IST tak aata hai, isliye ye kaafi der baad hai.
+    #
+    # Minute 35 jaan-boojh kar hai, 00 nahi: GitHub ke scheduled job poore ghante
+    # par bheed me 10-30 minute (kabhi zyada) late chalte hain. Ye best-effort
+    # hai, iska koi SLA nahi -- isliye daily.py 45 session tak peeche ka data
+    # khud bhar leta hai. Ek din chhoot jaana koi aapda nahi.
+    - cron: "35 14 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  # Do run ek saath state/prices.parquet likhein to file toot jaayegi.
+  group: daily-signal
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Engine install karo
+        # Engine ka code dobara yahan nahi likha gaya. Bhavcopy parser,
+        # corporate action parser aur adjustment classifier -- teenon wahin se
+        # aate hain, taaki do jagah do jawab na banein. Dono repo public hain,
+        # isliye iske liye koi token nahi chahiye.
+        run: |
+          python -m pip install --upgrade pip
+          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@main"
+
+      - name: Signal banao
+        run: python -m vajra_regime.cloud.daily --root . --scratch "$RUNNER_TEMP/nse"
+
+      - name: Natija commit karo
+        run: |
+          git config user.name  "vajra-bot"
+          git config user.email "sakilbeg756034@gmail.com"
+          git add out state
+          if git diff --cached --quiet; then
+            echo "kuch nahi badla -- chhutti thi ya data pehle se tha"
+            exit 0
+          fi
+          ASOF=$(python -c "import json;print(json.load(open('out/status.json'))['as_of_session'])")
+          git commit -m "signals: $ASOF"
+          git push

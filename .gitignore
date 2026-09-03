@@ -1,0 +1,6 @@
+# Ye repo DATA rakhta hai -- parquet aur csv yahan zaroori hain, ignore karna
+# bilkul galat hoga. Sirf kachra bahar rakhte hain.
+__pycache__/
+*.pyc
+_scratch/
+_cloud_check.csv
