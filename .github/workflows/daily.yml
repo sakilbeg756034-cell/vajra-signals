@@ -14,14 +14,21 @@ name: roz ka signal
 
 on:
   schedule:
-    # 14:35 UTC = 20:05 IST. NSE 15:30 IST par band hota hai aur bhavcopy
-    # ~18:00-19:00 IST tak aata hai, isliye ye kaafi der baad hai.
+    # Chaar koshish, 17:50 se 20:50 IST tak. Pehli jo kaamyaab ho wahi commit
+    # karti hai; baaki us din no-op ho jaati hain (data pehle se store me hai).
     #
-    # Minute 35 jaan-boojh kar hai, 00 nahi: GitHub ke scheduled job poore ghante
-    # par bheed me 10-30 minute (kabhi zyada) late chalte hain. Ye best-effort
-    # hai, iska koi SLA nahi -- isliye daily.py 45 session tak peeche ka data
-    # khud bhar leta hai. Ek din chhoot jaana koi aapda nahi.
-    - cron: "35 14 * * 1-5"
+    # Chaar isliye, ek nahi:
+    #   - NSE bhavcopy ~18:00-19:00 IST ke beech kabhi bhi aata hai, tay nahi
+    #   - GitHub ke scheduled job bheed me 10-30 minute (kabhi zyada) late
+    #     chalte hain -- inka koi SLA nahi hai
+    #   - Aap shaam 7 baje tak sheet dekhte ho, isliye der surakshit nahi hai
+    #
+    # Jo koshish jaldi chal jaye usme bhavcopy na mile to wo 404 par chup-chaap
+    # ruk jaati hai (chhutti wala rasta), kuch kharaab nahi karti.
+    - cron: "20 12 * * 1-5"   # 17:50 IST
+    - cron: "20 13 * * 1-5"   # 18:50 IST
+    - cron: "20 14 * * 1-5"   # 19:50 IST
+    - cron: "50 15 * * 1-5"   # 21:20 IST -- aakhri jaal, agar upar wale late hue
   workflow_dispatch:
 
 permissions:
