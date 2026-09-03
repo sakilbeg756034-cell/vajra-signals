@@ -1,0 +1,28 @@
+{
+  "as_of_session": "2026-09-02",
+  "generated_at_utc": "2026-09-03T01:22:06+00:00",
+  "built_by": "github-actions",
+  "universe_rows": 729,
+  "eligible": 712,
+  "n_holdings": 12,
+  "exit_rank": 36,
+  "top_symbols": [
+    "CUPID",
+    "ATHERENERG",
+    "SBC",
+    "SANSERA",
+    "WELCORP",
+    "RPTECH",
+    "CPPLUS",
+    "HAPPYFORGE",
+    "HFCL",
+    "RPEL",
+    "LAURUSLABS",
+    "AEROFLEX"
+  ],
+  "sessions_added_this_run": [],
+  "holidays_or_unpublished": [
+    "2026-09-03"
+  ],
+  "corporate_action_events_known": 37445
+}
