@@ -1,29 +1,29 @@
 {
-  "as_of_session": "2026-09-02",
-  "generated_at_utc": "2026-09-03T03:43:04+00:00",
-  "built_by": "github-actions",
-  "universe_rows": 729,
-  "eligible": 712,
+  "as_of_session": "2026-09-03",
+  "generated_at_utc": "2026-09-03T11:11:27+00:00",
+  "built_by": "laptop",
+  "universe_rows": 731,
+  "eligible": 711,
   "n_holdings": 12,
   "exit_rank": 36,
   "top_symbols": [
     "CUPID",
+    "STLTECH",
+    "MTARTECH",
     "ATHERENERG",
     "SBC",
-    "SANSERA",
     "WELCORP",
-    "RPTECH",
-    "CPPLUS",
-    "HAPPYFORGE",
-    "HFCL",
+    "SANSERA",
+    "BLISSGVS",
     "RPEL",
-    "LAURUSLABS",
-    "AEROFLEX"
+    "CPPLUS",
+    "RPTECH",
+    "HAPPYFORGE"
   ],
-  "sessions_added_this_run": [],
-  "holidays_or_unpublished": [
+  "sessions_added_this_run": [
     "2026-09-03"
   ],
-  "corporate_action_events_known": 37445,
+  "holidays_or_unpublished": [],
+  "corporate_action_events_known": 37446,
   "reference_names_known": 750
 }
