@@ -4,3 +4,15 @@ __pycache__/
 *.pyc
 _scratch/
 _cloud_check.csv
+
+# state/ ab `state` BRANCH par rehta hai, main par nahi.
+#
+# Wajah (7 September 2026): prices.parquet 25 MB ka hai aur parquet pehle se
+# compressed hai, isliye git har din ki POORI NAYI COPY rakhta tha -- ~22 MB
+# per trading din, ~5.5 GB per saal. Do mahine me GitHub ki chetavni, ek saal
+# me push band. Uske pehle hi checkout itna dheema ho jaata ki daily run
+# 30-minute timeout par fail hone lagta -- yaani live signal BAND.
+#
+# Ab state har din `state` branch par FORCE-PUSH hota hai: sirf ek commit,
+# koi itihaas nahi. Repo hamesha chhota rehta hai.
+state/

@@ -46,6 +46,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # STATE ALAG BRANCH SE AATA HAI -- ye 7 September 2026 ka badlav hai.
+      #
+      # KYUN: `state/prices.parquet` 25 MB ka hai aur parquet pehle se
+      # compressed hota hai, isliye git har din ki POORI NAYI COPY rakhta hai.
+      # Naapa gaya: sirf 4 din ke state = 89 MB. Yaani ~22 MB PER TRADING DIN,
+      # ~5.5 GB per saal. GitHub 1 GB par chetavni deta hai (2 mahine me) aur
+      # 5 GB ke aas-paas push rok deta hai (1 saal me). Uske pehle hi har run
+      # ka `actions/checkout` itna dheema ho jaata ki 30-minute timeout par ye
+      # workflow FAIL hone lagta -- yaani live signal BAND.
+      #
+      # ILAAJ: state ab `state` branch par rehta hai, jise har din FORCE-PUSH
+      # kiya jaata hai -- sirf EK commit, koi itihaas nahi. Repo hamesha chhota.
+      # `out/` (chhoti CSV) main par hi rehti hai aur uska poora itihaas
+      # bachta hai -- wahi to record hai ki system ne kis din kya kaha.
+      - name: State laao (state branch se)
+        run: |
+          git fetch --depth 1 origin state &&             git checkout FETCH_HEAD -- state || {
+              echo "::error::state branch se state nahi mila."
+              echo "Pehli baar chala rahe ho to pehle state branch banao."
+              exit 1
+            }
+          ls -la state
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -66,11 +89,24 @@ jobs:
         run: |
           git config user.name  "vajra-bot"
           git config user.email "sakilbeg756034@gmail.com"
-          git add out state
-          if git diff --cached --quiet; then
-            echo "kuch nahi badla -- chhutti thi ya data pehle se tha"
-            exit 0
-          fi
           ASOF=$(python -c "import json;print(json.load(open('out/status.json'))['as_of_session'])")
-          git commit -m "signals: $ASOF"
-          git push
+
+          # 1. out/ -- main par, POORA itihaas. Ye file chhoti hain (~100 KB)
+          #    aur inka itihaas hi wo record hai ki system ne kis din kya kaha.
+          git add out
+          if git diff --cached --quiet; then
+            echo "out/ me kuch nahi badla -- chhutti thi ya data pehle se tha"
+          else
+            git commit -m "signals: $ASOF"
+            git push
+          fi
+
+          # 2. state/ -- `state` branch par, sirf EK commit. Har din purana
+          #    mita kar naya. Isi se repo saalon tak chhota rehta hai.
+          #    (Wajah upar "State laao" step me poori likhi hai.)
+          git checkout --orphan state-tmp
+          git reset
+          git add -f state
+          git commit -q -m "state: $ASOF"
+          git push -f origin state-tmp:state
+          echo "state branch par force-push ho gaya (sirf ek commit)"
