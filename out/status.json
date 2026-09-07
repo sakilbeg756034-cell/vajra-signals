@@ -1,6 +1,6 @@
 {
   "as_of_session": "2026-09-07",
-  "generated_at_utc": "2026-09-07T17:46:24+00:00",
+  "generated_at_utc": "2026-09-07T18:18:04+00:00",
   "built_by": "github-actions",
   "universe_rows": 734,
   "eligible": 660,
@@ -28,13 +28,8 @@
     "MCX",
     "SHILPAMED"
   ],
-  "sessions_added_this_run": [
-    "2026-09-07"
-  ],
-  "holidays_or_unpublished": [
-    "2026-09-05",
-    "2026-09-06"
-  ],
+  "sessions_added_this_run": [],
+  "holidays_or_unpublished": [],
   "corporate_action_events_known": 37488,
   "reference_names_known": 2581
 }
