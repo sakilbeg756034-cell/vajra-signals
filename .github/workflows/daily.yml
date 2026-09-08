@@ -67,6 +67,35 @@ jobs:
               echo "Pehli baar chala rahe ho to pehle state branch banao."
               exit 1
             }
+
+          # ---- INDEX SE STATE HATAO. YE LINE HATANA MAT. ----
+          #
+          # `git checkout <ref> -- <path>` file ko working tree me laata hai
+          # AUR use INDEX me STAGE bhi kar deta hai. Yahi ek baat thi jisne
+          # 7 September 2026 wale poore "state ko alag branch par le jao"
+          # fix ko nakaam kar diya.
+          #
+          # Kaise: neeche `git add out` ke baad `git diff --cached` khaali
+          # nahi hota -- kyunki `state/` pehle se staged pada hai. Isliye
+          # har roz ka commit `out/` ke saath 25 MB ka `state/prices.parquet`
+          # bhi main par le jaata tha. .gitignore me `state/` likha hona kaam
+          # nahi aata, kyunki ignore sirf UNTRACKED file par lagta hai --
+          # jo cheez khud stage kar di gayi ho uspar nahi.
+          #
+          # Naapa gaya (8-Sep-2026): 7-Sep ke fix ke TURANT BAAD wale run se
+          # hi state dobara main par chala gaya, aur chaar run me repo 90 MB
+          # ka ho gaya. Yaani wo saara khatra jyon ka tyon wapas aa gaya tha
+          # jo us fix ne hataya tha: ~22 MB per trading din, ~5.5 GB per
+          # saal, aur uske pehle hi har run ka checkout itna dheema ki 30
+          # minute ka timeout lag jaye -- matlab LIVE SIGNAL BAND.
+          #
+          # `git reset -- state` sirf INDEX saaf karta hai. File working
+          # tree me jyon ki tyon rehti hai (engine ko wahi chahiye), bas
+          # commit me nahi jaati.
+          git reset -q -- state
+
+          echo "index me kya staged hai (state yahan NAHI dikhna chahiye):"
+          git diff --cached --name-only
           ls -la state
 
       - uses: actions/setup-python@v5
