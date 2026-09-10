@@ -109,7 +109,8 @@ jobs:
         # isliye iske liye koi token nahi chahiye.
         run: |
           python -m pip install --upgrade pip
-          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@main"
+          # Tested release: update this SHA only after engine tests and system verification.
+          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@6bf5efbb5e9da5b720529da2b5893313974ef40f"
 
       - name: Signal banao
         run: python -m vajra_regime.cloud.daily --root . --scratch "$RUNNER_TEMP/nse"
