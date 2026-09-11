@@ -1,0 +1,18 @@
+{
+  "adjusted_through": "2026-09-07",
+  "ath_covers_from": "2011-06-22",
+  "ath_seed_rows": 3098,
+  "bootstrapped_at_utc": "2026-09-08T03:59:47+00:00",
+  "bootstrapped_from": "D:\\VAJRA_DATA",
+  "event_calendar_rows": 33392,
+  "first_session": "2024-09-02",
+  "isin_lineage_companies": 3098,
+  "isin_lineage_rows": 3667,
+  "last_run_utc": "2026-09-11T18:45:59+00:00",
+  "last_session": "2026-09-11",
+  "prices_are": "ADJUSTED through adjusted_through; live rows appended later are AS-TRADED",
+  "rows": 1090032,
+  "rows_appended_last_run": 0,
+  "securities": 2746,
+  "sessions": 500
+}
