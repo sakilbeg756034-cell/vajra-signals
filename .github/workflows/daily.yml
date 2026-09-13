@@ -110,7 +110,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           # Tested release: update this SHA only after engine tests and system verification.
-          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@d1a98e37e8ea20d73fe2ff3be65676487bac7c66"
+          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@8fae8c4a6ad1667f1aa496c3c060d7ea584af8c4"
 
       - name: Signal banao
         run: python -m vajra_regime.cloud.daily --root . --scratch "$RUNNER_TEMP/nse"
