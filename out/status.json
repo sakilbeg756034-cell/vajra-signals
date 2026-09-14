@@ -1,6 +1,6 @@
 {
   "as_of_session": "2026-09-11",
-  "generated_at_utc": "2026-09-13T19:30:00+00:00",
+  "generated_at_utc": "2026-09-14T05:36:19+00:00",
   "built_by": "github-actions",
   "universe_rows": 750,
   "eligible": 672,
@@ -31,8 +31,11 @@
   "sessions_added_this_run": [],
   "holidays_or_unpublished": [
     "2026-09-12",
-    "2026-09-13"
+    "2026-09-13",
+    "2026-09-14"
   ],
   "corporate_action_events_known": 33517,
-  "reference_names_known": 2566
+  "reference_names_known": 2566,
+  "isin_lineage_added": [],
+  "isin_lineage_unresolved": []
 }
