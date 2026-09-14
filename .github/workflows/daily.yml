@@ -14,21 +14,24 @@ name: roz ka signal
 
 on:
   schedule:
-    # Chaar koshish, 17:50 se 20:50 IST tak. Pehli jo kaamyaab ho wahi commit
-    # karti hai; baaki us din no-op ho jaati hain (data pehle se store me hai).
+    # NSE KA BHAVCOPY ~16:33 IST PAR AATA HAI -- 14 September 2026 ko naapa.
     #
-    # Chaar isliye, ek nahi:
-    #   - NSE bhavcopy ~18:00-19:00 IST ke beech kabhi bhi aata hai, tay nahi
-    #   - GitHub ke scheduled job bheed me 10-30 minute (kabhi zyada) late
-    #     chalte hain -- inka koi SLA nahi hai
-    #   - Aap shaam 7 baje tak sheet dekhte ho, isliye der surakshit nahi hai
+    # 26-Aug se 11-Sep 2026 tak har trading din ki file ka Last-Modified
+    # 11:02-11:03 UTC tha, yaani 16:32-16:33 IST. Pehle yahan sirf chaar
+    # koshish thin (17:50, 18:50, 19:50, 21:20 IST), aur GitHub ke scheduled run
+    # roz 3-4 ghante late chalte the: sheet ~22:00 IST par taaza hoti thi, jabki
+    # data 16:33 se tayyar tha.
     #
-    # Jo koshish jaldi chal jaye usme bhavcopy na mile to wo 404 par chup-chaap
-    # ruk jaati hai (chhutti wala rasta), kuch kharaab nahi karti.
-    - cron: "20 12 * * 1-5"   # 17:50 IST
-    - cron: "20 13 * * 1-5"   # 18:50 IST
-    - cron: "20 14 * * 1-5"   # 19:50 IST
-    - cron: "50 15 * * 1-5"   # 21:20 IST -- aakhri jaal, agar upar wale late hue
+    # Ab 16:37 se 00:22 IST tak HAR 15 MINUTE ek koshish, aur agli subah 06:37
+    # par ek aakhri jaal. Jo koshish naya din pakad le wahi commit karti hai.
+    # NSE jis din der kare, koshishein apne aap chalti rehti hain.
+    #
+    # Itni koshish NSE par bojh nahi banti: jab naya din NSE par abhi nahi aaya,
+    # `daily.py` sirf EK bhavcopy request karke turant ruk jaata hai --
+    # corporate action API aur reference list tabhi maange jaate hain jab sach
+    # me naya din aaya ho.
+    - cron: "7,22,37,52 11-18 * * 1-5"   # 16:37 se 00:22 IST, har 15 minute
+    - cron: "7 1 * * 2-6"                # 06:37 IST agli subah -- aakhri jaal
   workflow_dispatch:
 
 permissions:
@@ -98,6 +101,11 @@ jobs:
           git diff --cached --name-only
           ls -la state
 
+          # Har 15 minute ki koshish me aksar naya din nahi hota. Tab state
+          # badalta hi nahi, aur state branch par faltu force-push nahi hona
+          # chahiye. Uske liye run se PEHLE ka hisaab yahan rakha jaata hai.
+          sha256sum state/* > "$RUNNER_TEMP/state.before"
+
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
@@ -110,10 +118,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           # Tested release: update this SHA only after engine tests and system verification.
-          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@8fae8c4a6ad1667f1aa496c3c060d7ea584af8c4"
+          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@f71a7452beebb6757eebb5e61afff651ce1804ef"
 
       - name: Signal banao
-        run: python -m vajra_regime.cloud.daily --root . --scratch "$RUNNER_TEMP/nse"
+        # Haath se chalaya run (workflow_dispatch) hamesha poora hisaab dobara
+        # karta hai. Scheduled run me naya din na ho to daily.py turant ruk
+        # jaata hai aur out/ waisa ka waisa rehta hai.
+        run: |
+          FORCE=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then FORCE="--force"; fi
+          python -m vajra_regime.cloud.daily --root . --scratch "$RUNNER_TEMP/nse" $FORCE
 
       - name: Natija commit karo
         run: |
@@ -134,6 +148,10 @@ jobs:
           # 2. state/ -- `state` branch par, sirf EK commit. Har din purana
           #    mita kar naya. Isi se repo saalon tak chhota rehta hai.
           #    (Wajah upar "State laao" step me poori likhi hai.)
+          if sha256sum state/* | diff -q - "$RUNNER_TEMP/state.before" > /dev/null; then
+            echo "state nahi badla -- state branch par push ki zaroorat nahi"
+            exit 0
+          fi
           git checkout --orphan state-tmp
           git reset
           git add -f state
