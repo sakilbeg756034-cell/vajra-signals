@@ -32,6 +32,10 @@ on:
     # me naya din aaya ho.
     - cron: "7,22,37,52 11-18 * * 1-5"   # 16:37 se 00:22 IST, har 15 minute
     - cron: "7 1 * * 2-6"                # 06:37 IST agli subah -- aakhri jaal
+    # Dopahar ke slot (16-Sep-2026): inme se jo bhi run 11:15 IST ke baad
+    # shuru ho, wo aaj ki NSE file ka intezaar karke ~16:35 par signal bana deta
+    # hai (neeche "intezaar" wala step).
+    - cron: "15,45 5-10 * * 1-5"         # 10:45 se 16:15 IST, har 30 minute
   workflow_dispatch:
 
 permissions:
@@ -45,7 +49,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 355: dopahar ka run NSE file ka ~5 ghante tak intezaar kar sakta hai.
+    # Asli kaam ke step apni alag chhoti hadd rakhte hain (neeche).
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
@@ -106,11 +112,60 @@ jobs:
           # chahiye. Uske liye run se PEHLE ka hisaab yahan rakha jaata hai.
           sha256sum state/* > "$RUNNER_TEMP/state.before"
 
+      # AAJ KI NSE FILE KA INTEZAAR -- 16 September 2026.
+      #
+      # GitHub scheduled run apne tay waqt par nahi chalata: 14-15 Sep ko har
+      # 15 minute ke slot me se lagbhag ek hi run chala, aur wo bhi ghanton
+      # der se (22:32, 02:24, 11:35, 21:02 IST). NSE file ~16:33 IST aati hai.
+      # Isliye jo scheduled run dopahar/shaam (11:15-19:30 IST, Mon-Fri) me
+      # shuru ho, wo "file nahi aayi" dekh kar band nahi hota: har 5 minute
+      # sirf EK HEAD request se aaj ki file dekhta hai, aur file aate hi 60
+      # second ruk kar aage badhta hai. Seema: 320 minute ya 19:30 IST, jo
+      # pehle aaye. Uske baad (chhutti / NSE late) chup-chaap aage -- daily.py
+      # naya din na ho to khud ruk jaata hai, aur raat ke run pehle jaise hain.
+      # Haath se chalaya run (workflow_dispatch) kabhi intezaar nahi karta.
+      - name: Aaj ki NSE file ka intezaar (sirf dopahar/shaam ke scheduled run me)
+        timeout-minutes: 330
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -u
+          if [ "$EVENT" != "schedule" ]; then
+            echo "haath se chalaya run -- intezaar nahi"
+            exit 0
+          fi
+          DOW=$(TZ=Asia/Kolkata date +%u)
+          HM=$(TZ=Asia/Kolkata date +%H%M)
+          if [ "$DOW" -gt 5 ] || [ "$HM" -lt 1115 ] || [ "$HM" -ge 1930 ]; then
+            echo "abhi intezaar ka waqt nahi (din $DOW, $HM IST)"
+            exit 0
+          fi
+          DAY=$(TZ=Asia/Kolkata date +%Y%m%d)
+          URL="https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_${DAY}_F_0000.csv.zip"
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36"
+          DEADLINE=$(( $(date +%s) + 320 * 60 ))
+          UNTIL_1930=$(TZ=Asia/Kolkata date -d "today 19:30" +%s)
+          if [ "$UNTIL_1930" -lt "$DEADLINE" ]; then DEADLINE=$UNTIL_1930; fi
+          while true; do
+            CODE=$(curl -s -o /dev/null -w "%{http_code}" -I -A "$UA" -H "Referer: https://www.nseindia.com/" --max-time 30 "$URL" || true)
+            if [ "$CODE" = "200" ]; then
+              echo "NSE ki $DAY file aa gayi -- 60 second baad signal banega"
+              sleep 60
+              exit 0
+            fi
+            if [ "$(date +%s)" -ge "$DEADLINE" ]; then
+              echo "intezaar khatam: $DAY file nahi aayi (HTTP $CODE) -- chhutti ya NSE late, aage ke run sambhalenge"
+              exit 0
+            fi
+            sleep 300
+          done
+
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
 
       - name: Engine install karo
+        timeout-minutes: 10
         # Engine ka code dobara yahan nahi likha gaya. Bhavcopy parser,
         # corporate action parser aur adjustment classifier -- teenon wahin se
         # aate hain, taaki do jagah do jawab na banein. Dono repo public hain,
@@ -121,6 +176,7 @@ jobs:
           pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@272daed5508562e3026f4953fc41e4d181c22b3b"
 
       - name: Signal banao
+        timeout-minutes: 25
         # Haath se chalaya run (workflow_dispatch) hamesha poora hisaab dobara
         # karta hai. Scheduled run me naya din na ho to daily.py turant ruk
         # jaata hai aur out/ waisa ka waisa rehta hai.
@@ -130,6 +186,7 @@ jobs:
           python -m vajra_regime.cloud.daily --root . --scratch "$RUNNER_TEMP/nse" $FORCE
 
       - name: Natija commit karo
+        timeout-minutes: 10
         run: |
           git config user.name  "vajra-bot"
           git config user.email "sakilbeg756034@gmail.com"
