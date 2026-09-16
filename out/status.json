@@ -1,43 +1,39 @@
 {
-  "as_of_session": "2026-09-15",
-  "generated_at_utc": "2026-09-15T15:33:04+00:00",
+  "as_of_session": "2026-09-16",
+  "generated_at_utc": "2026-09-16T11:07:18+00:00",
   "built_by": "github-actions",
   "universe_rows": 750,
-  "eligible": 672,
+  "eligible": 671,
   "n_holdings": 20,
   "exit_rank": 50,
   "top_symbols": [
     "SBC",
-    "ATHERENERG",
-    "WELCORP",
     "SANSERA",
+    "WELCORP",
+    "CPPLUS",
+    "ATHERENERG",
     "ARFIN",
     "RPTECH",
-    "CPPLUS",
-    "HAPPYFORGE",
     "LAURUSLABS",
-    "RPEL",
-    "PAISALO",
+    "HAPPYFORGE",
     "SKYGOLD",
+    "WHEELS",
+    "PAISALO",
+    "RPEL",
     "AVALON",
-    "MCX",
-    "TMB",
     "KIRLOSENG",
     "AETHER",
-    "UNIPARTS",
+    "TMB",
+    "SHILPAMED",
     "FEDERALBNK",
-    "IDEA"
+    "MCX"
   ],
   "sessions_added_this_run": [
-    "2026-09-15"
+    "2026-09-16"
   ],
-  "holidays_or_unpublished": [
-    "2026-09-12",
-    "2026-09-13",
-    "2026-09-14"
-  ],
-  "corporate_action_events_known": 33551,
-  "reference_names_known": 2583,
+  "holidays_or_unpublished": [],
+  "corporate_action_events_known": 33581,
+  "reference_names_known": 2569,
   "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
