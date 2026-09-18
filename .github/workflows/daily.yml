@@ -53,7 +53,37 @@ jobs:
     # Asli kaam ke step apni alag chhoti hadd rakhte hain (neeche).
     timeout-minutes: 355
     steps:
+      # MAIN KA TAAZA HAAL LO, RUN BANNE KE WAQT KA NAHI -- 18 September 2026.
+      #
+      # Bina `ref:` ke `actions/checkout` wo SHA laata hai jo run BANNE ke
+      # waqt main par tha. Ye run ghanton queue me khade rehte hain (upar wala
+      # `concurrency` ek waqt me ek hi run chalne deta hai, aur dopahar wala
+      # run NSE file ka ~5 ghante intezaar kar sakta hai). Us beech pehla run
+      # aaj ka signal commit kar deta hai -- aur queue me khada run phir bhi
+      # KAL ke SHA par checkout hota hai.
+      #
+      # Kya hota tha: us purane checkout me `out/status.json` kal ka hota,
+      # jabki `state` branch se aaj ka state aata. Engine ka
+      # `_already_published()` yahi `out/status.json` dekhta hai -- mismatch
+      # dekh kar wo "naya din hai" maan kar POORA hisaab dobara karta (NSE ka
+      # corporate action API aur reference list dobara maangta -- wahi bojh
+      # jisse bachne ke liye "naya din nahi to turant ruko" likha gaya tha),
+      # aaj ki tareekh ka commit banata, aur `git push` REJECT ho jaata --
+      # kyunki main pehle hi aage badh chuka hota. Run RED, mail aati, jabki
+      # signal bilkul sahi ban chuka hota.
+      #
+      # Naapa gaya: 16-Sep run #44, 17-Sep #49, 18-Sep #54 -- teenon din wahi
+      # "Natija commit karo" step, wahi 1-second ki failure. Yaani har trading
+      # din ek jhooti RED mail. Khatra sirf mail ka nahi: roz ki jhooti mail
+      # se asli kharabi wali mail bhi nazarandaaz hone lagti hai.
+      #
+      # `ref: main` se har run chalte waqt main ka tip leta hai. Tab queue me
+      # khade run ka `out/status.json` aaj ka hota hai, engine turant ruk
+      # jaata hai, aur run chup-chaap GREEN -- na push race, na NSE par
+      # faltu request.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
 
       # STATE ALAG BRANCH SE AATA HAI -- ye 7 September 2026 ka badlav hai.
       #
