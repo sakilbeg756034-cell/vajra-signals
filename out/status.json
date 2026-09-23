@@ -1,49 +1,39 @@
 {
-  "as_of_session": "2026-09-22",
-  "generated_at_utc": "2026-09-22T11:16:24+00:00",
+  "as_of_session": "2026-09-23",
+  "generated_at_utc": "2026-09-23T11:08:51+00:00",
   "built_by": "github-actions",
   "universe_rows": 750,
-  "eligible": 673,
+  "eligible": 672,
   "n_holdings": 20,
   "exit_rank": 50,
   "top_symbols": [
     "SBC",
     "SANSERA",
-    "ATHERENERG",
     "WELCORP",
-    "LAURUSLABS",
-    "CPPLUS",
-    "RPTECH",
-    "WHEELS",
-    "SKYGOLD",
+    "ATHERENERG",
     "HAPPYFORGE",
-    "PAISALO",
+    "LAURUSLABS",
+    "SKYGOLD",
+    "RPTECH",
+    "CPPLUS",
+    "WHEELS",
     "FEDERALBNK",
-    "ARFIN",
-    "KIRLOSENG",
     "AETHER",
-    "STYLAMIND",
+    "KIRLOSENG",
+    "TMB",
+    "PAISALO",
     "MCX",
-    "RPEL",
     "SHILPAMED",
-    "SETL"
+    "ACUTAAS",
+    "ARFIN",
+    "APARINDS"
   ],
   "sessions_added_this_run": [
-    "2026-09-22"
+    "2026-09-23"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33764,
-  "reference_names_known": 2578,
-  "isin_lineage_added": [
-    {
-      "Symbol": "TAALTECH",
-      "OldISIN": "INE524T01011",
-      "NewISIN": "INE524T01029",
-      "OldLast": "2026-09-21",
-      "NewFirst": "2026-09-22",
-      "GapDays": 1,
-      "CanonicalISIN": "INE524T01011"
-    }
-  ],
+  "corporate_action_events_known": 33801,
+  "reference_names_known": 2581,
+  "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
