@@ -1,6 +1,6 @@
 {
   "as_of_session": "2026-09-24",
-  "generated_at_utc": "2026-09-24T11:07:07+00:00",
+  "generated_at_utc": "2026-09-24T19:50:40+00:00",
   "built_by": "github-actions",
   "universe_rows": 750,
   "eligible": 672,
@@ -28,11 +28,9 @@
     "TMB",
     "BHEL"
   ],
-  "sessions_added_this_run": [
-    "2026-09-24"
-  ],
+  "sessions_added_this_run": [],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33803,
+  "corporate_action_events_known": 33801,
   "reference_names_known": 2583,
   "isin_lineage_added": [],
   "isin_lineage_unresolved": []
