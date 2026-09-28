@@ -216,6 +216,7 @@ jobs:
           python -m vajra_regime.cloud.daily --root . --scratch "$RUNNER_TEMP/nse" $FORCE
 
       - name: Natija commit karo
+        id: natija
         timeout-minutes: 10
         run: |
           git config user.name  "vajra-bot"
@@ -230,6 +231,7 @@ jobs:
           else
             git commit -m "signals: $ASOF"
             git push
+            echo "naya_din=$ASOF" >> "$GITHUB_OUTPUT"   # neeche "Intel ko chalao" isi se jaagta hai
           fi
 
           # 2. state/ -- `state` branch par, sirf EK commit. Har din purana
@@ -245,3 +247,34 @@ jobs:
           git commit -q -m "state: $ASOF"
           git push -f origin state-tmp:state
           echo "state branch par force-push ho gaya (sirf ek commit)"
+
+      # INTEL KO CHALAO -- 28 September 2026 (owner ne Option A approve kiya).
+      #
+      # Private repo `vajra-intel` roz ka bazaar card + report banata hai. Uska
+      # apna cron GitHub ne 28-Sep ko EK BAAR bhi nahi chalaya (5 slot, 0 run),
+      # aur is repo ke cron bhi ghanton der se chalte hain (upar "intezaar" wala
+      # step). Isliye jo run aaj ka naya din COMMIT kare, wahi turant intel ko
+      # ek baar jagaata hai -- tab card ~2 minute me taiyar.
+      #
+      # Signal par KOI asar nahi: ye step sabse aakhir me hai, sirf tab chalta
+      # hai jab upar sab GREEN ho aur naya din sach me commit hua ho, aur
+      # continue-on-error hai -- ye fail ho to bhi run GREEN, out/ aur state
+      # pehle hi push ho chuke. Secret na ho to chup-chaap skip.
+      # Token: fine-grained, SIRF vajra-intel repo, SIRF "Actions: Read and
+      # write" -- ye na signal badal sakta hai na koi code, bas intel chala sakta hai.
+      - name: Intel ko chalao (private vajra-intel)
+        if: success() && steps.natija.outputs.naya_din != ''
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          TOKEN: ${{ secrets.VAJRA_INTEL_DISPATCH }}
+          ASOF: ${{ steps.natija.outputs.naya_din }}
+        run: |
+          if [ -z "$TOKEN" ]; then echo "VAJRA_INTEL_DISPATCH secret nahi -- intel skip"; exit 0; fi
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -X POST \
+            -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/sakilbeg756034-cell/vajra-intel/actions/workflows/intel.yml/dispatches \
+            -d "{\"ref\":\"main\",\"inputs\":{\"reason\":\"vajra-signals $ASOF\"}}")
+          echo "intel dispatch HTTP $CODE (204 = theek)"
+          [ "$CODE" = "204" ] || echo "::warning::intel dispatch HTTP $CODE -- signal theek hai, sirf bazaar card late hoga"
