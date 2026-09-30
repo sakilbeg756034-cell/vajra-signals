@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-09-29",
-  "generated_at_utc": "2026-09-29T11:15:25+00:00",
+  "as_of_session": "2026-09-30",
+  "generated_at_utc": "2026-09-30T11:09:03+00:00",
   "built_by": "github-actions",
   "universe_rows": 750,
   "eligible": 672,
@@ -9,31 +9,31 @@
   "top_symbols": [
     "SANSERA",
     "WELCORP",
-    "SBC",
     "RPTECH",
     "LAURUSLABS",
-    "WHEELS",
-    "SKYGOLD",
-    "ATHERENERG",
-    "SHILPAMED",
+    "SBC",
     "CPPLUS",
+    "SKYGOLD",
+    "WHEELS",
+    "SHILPAMED",
+    "ATHERENERG",
     "HAPPYFORGE",
-    "PAISALO",
     "AETHER",
     "KIRLOSENG",
-    "RPEL",
     "MCX",
+    "PAISALO",
     "SONACOMS",
+    "TMB",
     "ARFIN",
-    "ACUTAAS",
-    "BAJAJCON"
+    "RPEL",
+    "STYLAMIND"
   ],
   "sessions_added_this_run": [
-    "2026-09-29"
+    "2026-09-30"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33803,
-  "reference_names_known": 2585,
+  "corporate_action_events_known": 33805,
+  "reference_names_known": 2593,
   "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
