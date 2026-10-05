@@ -1,0 +1,33 @@
+# D7 (05-Oct-2026): exact package versions of the LAST GREEN run (runner ubuntu-24.04, CPython 3.12.14, pip 26.2.1).
+# Used as pip -c constraints: the engine still comes from its pinned SHA; only third-party versions are frozen here.
+# Update ONLY together with a manual test run (see START_HERE_AI "cloud pins").
+annotated-doc==0.0.5
+annotated-types==0.8.0
+cloudpickle==3.1.2
+duckdb==1.5.6
+joblib==1.6.0
+markdown-it-py==4.2.0
+mdurl==0.1.2
+narwhals==2.26.0
+numpy==2.5.3
+pandas==2.3.3
+pyarrow==21.0.0
+pydantic==2.13.5
+pydantic-core==2.46.5
+pydantic-settings==2.15.0
+pygments==2.21.0
+pypdf==6.19.0
+python-dateutil==2.9.0.post0
+python-dotenv==1.2.4
+pytz==2026.4
+pyyaml==6.0.3
+rich==14.3.4
+scikit-learn==1.9.1
+scipy==1.18.1
+shellingham==1.5.4
+six==1.17.0
+threadpoolctl==3.7.0
+typer==0.27.2
+typing-extensions==4.16.0
+typing-inspection==0.4.4
+tzdata==2026.4

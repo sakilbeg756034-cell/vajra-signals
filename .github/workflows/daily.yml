@@ -48,7 +48,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # 355: dopahar ka run NSE file ka ~5 ghante tak intezaar kar sakta hai.
     # Asli kaam ke step apni alag chhoti hadd rakhte hain (neeche).
     timeout-minutes: 355
@@ -192,7 +192,7 @@ jobs:
 
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: "3.12"
+          python-version: "3.12.14"
 
       - name: Engine install karo
         timeout-minutes: 10
@@ -201,9 +201,9 @@ jobs:
         # aate hain, taaki do jagah do jawab na banein. Dono repo public hain,
         # isliye iske liye koi token nahi chahiye.
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install "pip==26.2.1"
           # Tested release: update this SHA only after engine tests and system verification.
-          pip install "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@f8968984a69b13c9296de25e5ad27e2f889df9bd"
+          pip install -c .github/cloud-constraints.txt "vajra-market-regime-engine @ git+https://github.com/sakilbeg756034-cell/vajra-market-data@f8968984a69b13c9296de25e5ad27e2f889df9bd"
 
       - name: Signal banao
         timeout-minutes: 25
