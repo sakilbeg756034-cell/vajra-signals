@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-10-09",
-  "generated_at_utc": "2026-10-09T11:16:27+00:00",
+  "as_of_session": "2026-10-12",
+  "generated_at_utc": "2026-10-12T13:10:15+00:00",
   "built_by": "github-actions",
   "universe_rows": 749,
   "eligible": 672,
@@ -9,31 +9,34 @@
   "top_symbols": [
     "SBC",
     "SHREEJISPG",
-    "WELCORP",
     "SANSERA",
-    "RPTECH",
-    "LAURUSLABS",
     "CPPLUS",
-    "SHILPAMED",
+    "RPTECH",
+    "WELCORP",
+    "LAURUSLABS",
     "SKYGOLD",
-    "WHEELS",
+    "SHILPAMED",
     "AETHER",
-    "ATHERENERG",
+    "WHEELS",
     "GCSL",
     "HAPPYFORGE",
+    "ATHERENERG",
     "SONACOMS",
-    "KIRLOSENG",
-    "ACUTAAS",
-    "RATNAVEER",
+    "RRKABEL",
     "TMB",
-    "MCX"
+    "KIRLOSENG",
+    "STYLAMIND",
+    "FEDERALBNK"
   ],
   "sessions_added_this_run": [
-    "2026-10-09"
+    "2026-10-12"
   ],
-  "holidays_or_unpublished": [],
+  "holidays_or_unpublished": [
+    "2026-10-10",
+    "2026-10-11"
+  ],
   "corporate_action_events_known": 33821,
-  "reference_names_known": 2604,
+  "reference_names_known": 2621,
   "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
