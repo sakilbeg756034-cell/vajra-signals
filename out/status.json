@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-10-16",
-  "generated_at_utc": "2026-10-16T11:07:52+00:00",
+  "as_of_session": "2026-10-19",
+  "generated_at_utc": "2026-10-19T11:11:16+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 669,
@@ -10,39 +10,42 @@
     "SBC",
     "SHREEJISPG",
     "SKYGOLD",
+    "WELCORP",
+    "SANSERA",
     "LAURUSLABS",
     "CPPLUS",
-    "SANSERA",
-    "WELCORP",
-    "SHILPAMED",
     "RPTECH",
+    "SHILPAMED",
     "GCSL",
+    "WHEELS",
     "AETHER",
     "ATHERENERG",
-    "ACUTAAS",
-    "MBAPL",
-    "ARFIN",
     "HAPPYFORGE",
-    "KIRLOSENG",
-    "STYLAMIND",
+    "ARFIN",
+    "SONACOMS",
+    "MBAPL",
     "MCX",
-    "SONACOMS"
+    "KIRLOSENG",
+    "ACUTAAS"
   ],
   "sessions_added_this_run": [
-    "2026-10-16"
+    "2026-10-19"
   ],
-  "holidays_or_unpublished": [],
+  "holidays_or_unpublished": [
+    "2026-10-17",
+    "2026-10-18"
+  ],
   "corporate_action_events_known": 33831,
-  "reference_names_known": 2606,
+  "reference_names_known": 2620,
   "isin_lineage_added": [
     {
-      "Symbol": "BANSALWIRE",
-      "OldISIN": "INE0B9K01025",
-      "NewISIN": "INE0B9K01033",
-      "OldLast": "2026-10-15",
-      "NewFirst": "2026-10-16",
-      "GapDays": 1,
-      "CanonicalISIN": "INE0B9K01025"
+      "Symbol": "CCAVENUE",
+      "OldISIN": "INE483S01020",
+      "NewISIN": "INE483S01038",
+      "OldLast": "2026-10-12",
+      "NewFirst": "2026-10-19",
+      "GapDays": 7,
+      "CanonicalISIN": "INE483S01012"
     }
   ],
   "isin_lineage_unresolved": []
