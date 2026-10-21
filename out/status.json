@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-10-19",
-  "generated_at_utc": "2026-10-19T11:11:16+00:00",
+  "as_of_session": "2026-10-21",
+  "generated_at_utc": "2026-10-21T11:08:42+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 669,
@@ -10,43 +10,32 @@
     "SBC",
     "SHREEJISPG",
     "SKYGOLD",
+    "CPPLUS",
     "WELCORP",
     "SANSERA",
     "LAURUSLABS",
-    "CPPLUS",
     "RPTECH",
-    "SHILPAMED",
     "GCSL",
+    "SHILPAMED",
     "WHEELS",
-    "AETHER",
     "ATHERENERG",
+    "AETHER",
     "HAPPYFORGE",
-    "ARFIN",
-    "SONACOMS",
-    "MBAPL",
-    "MCX",
     "KIRLOSENG",
-    "ACUTAAS"
+    "SONACOMS",
+    "ACUTAAS",
+    "MBAPL",
+    "SGMART",
+    "KTKBANK"
   ],
   "sessions_added_this_run": [
-    "2026-10-19"
+    "2026-10-21"
   ],
   "holidays_or_unpublished": [
-    "2026-10-17",
-    "2026-10-18"
+    "2026-10-20"
   ],
-  "corporate_action_events_known": 33831,
-  "reference_names_known": 2620,
-  "isin_lineage_added": [
-    {
-      "Symbol": "CCAVENUE",
-      "OldISIN": "INE483S01020",
-      "NewISIN": "INE483S01038",
-      "OldLast": "2026-10-12",
-      "NewFirst": "2026-10-19",
-      "GapDays": 7,
-      "CanonicalISIN": "INE483S01012"
-    }
-  ],
+  "corporate_action_events_known": 33834,
+  "reference_names_known": 2609,
+  "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
