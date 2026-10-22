@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-10-21",
-  "generated_at_utc": "2026-10-21T11:08:42+00:00",
+  "as_of_session": "2026-10-22",
+  "generated_at_utc": "2026-10-22T11:08:42+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 669,
@@ -11,31 +11,39 @@
     "SHREEJISPG",
     "SKYGOLD",
     "CPPLUS",
+    "LAURUSLABS",
     "WELCORP",
     "SANSERA",
-    "LAURUSLABS",
     "RPTECH",
     "GCSL",
     "SHILPAMED",
     "WHEELS",
-    "ATHERENERG",
-    "AETHER",
-    "HAPPYFORGE",
-    "KIRLOSENG",
     "SONACOMS",
+    "AETHER",
+    "KIRLOSENG",
+    "HAPPYFORGE",
+    "ATHERENERG",
     "ACUTAAS",
-    "MBAPL",
-    "SGMART",
-    "KTKBANK"
+    "CYIENTDLM",
+    "PAISALO",
+    "RRKABEL"
   ],
   "sessions_added_this_run": [
-    "2026-10-21"
+    "2026-10-22"
   ],
-  "holidays_or_unpublished": [
-    "2026-10-20"
+  "holidays_or_unpublished": [],
+  "corporate_action_events_known": 33838,
+  "reference_names_known": 2610,
+  "isin_lineage_added": [
+    {
+      "Symbol": "JSWDULUX",
+      "OldISIN": "INE133A01011",
+      "NewISIN": "INE133A01029",
+      "OldLast": "2026-10-21",
+      "NewFirst": "2026-10-22",
+      "GapDays": 1,
+      "CanonicalISIN": "INE133A01011"
+    }
   ],
-  "corporate_action_events_known": 33834,
-  "reference_names_known": 2609,
-  "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
