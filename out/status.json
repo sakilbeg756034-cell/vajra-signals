@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-10-22",
-  "generated_at_utc": "2026-10-22T11:08:42+00:00",
+  "as_of_session": "2026-10-23",
+  "generated_at_utc": "2026-10-23T11:09:37+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 669,
@@ -10,39 +10,39 @@
     "SBC",
     "SHREEJISPG",
     "SKYGOLD",
-    "CPPLUS",
-    "LAURUSLABS",
-    "WELCORP",
-    "SANSERA",
-    "RPTECH",
     "GCSL",
+    "LAURUSLABS",
+    "SANSERA",
+    "CPPLUS",
+    "WELCORP",
+    "RPTECH",
     "SHILPAMED",
     "WHEELS",
     "SONACOMS",
-    "AETHER",
-    "KIRLOSENG",
-    "HAPPYFORGE",
     "ATHERENERG",
+    "KIRLOSENG",
     "ACUTAAS",
-    "CYIENTDLM",
-    "PAISALO",
-    "RRKABEL"
+    "AETHER",
+    "HAPPYFORGE",
+    "MBAPL",
+    "KTKBANK",
+    "KRISHANA"
   ],
   "sessions_added_this_run": [
-    "2026-10-22"
+    "2026-10-23"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33838,
-  "reference_names_known": 2610,
+  "corporate_action_events_known": 33850,
+  "reference_names_known": 2614,
   "isin_lineage_added": [
     {
-      "Symbol": "JSWDULUX",
-      "OldISIN": "INE133A01011",
-      "NewISIN": "INE133A01029",
-      "OldLast": "2026-10-21",
-      "NewFirst": "2026-10-22",
+      "Symbol": "AZADIND",
+      "OldISIN": "INE566M01017",
+      "NewISIN": "INE566M01025",
+      "OldLast": "2026-10-22",
+      "NewFirst": "2026-10-23",
       "GapDays": 1,
-      "CanonicalISIN": "INE133A01011"
+      "CanonicalISIN": "INE566M01017"
     }
   ],
   "isin_lineage_unresolved": []
