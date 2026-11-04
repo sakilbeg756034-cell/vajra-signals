@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-03",
-  "generated_at_utc": "2026-11-03T11:06:50+00:00",
+  "as_of_session": "2026-11-04",
+  "generated_at_utc": "2026-11-04T12:59:57+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 671,
@@ -14,26 +14,26 @@
     "SANSERA",
     "WELCORP",
     "CPPLUS",
-    "SKYGOLD",
     "SHILPAMED",
-    "RPTECH",
     "RUBICON",
-    "ACUTAAS",
     "SGMART",
+    "RPTECH",
+    "SKYGOLD",
     "SSWL",
     "ATHERENERG",
-    "WHEELS",
-    "RPEL",
     "SONACOMS",
-    "HAPPYFORGE",
-    "AETHER"
+    "WHEELS",
+    "ACUTAAS",
+    "AETHER",
+    "RATNAVEER",
+    "FEDERALBNK"
   ],
   "sessions_added_this_run": [
-    "2026-11-03"
+    "2026-11-04"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33881,
-  "reference_names_known": 2624,
+  "corporate_action_events_known": 33890,
+  "reference_names_known": 2628,
   "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
