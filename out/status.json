@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-04",
-  "generated_at_utc": "2026-11-04T12:59:57+00:00",
+  "as_of_session": "2026-11-05",
+  "generated_at_utc": "2026-11-05T11:08:45+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 671,
@@ -20,20 +20,30 @@
     "RPTECH",
     "SKYGOLD",
     "SSWL",
-    "ATHERENERG",
     "SONACOMS",
-    "WHEELS",
+    "RPEL",
+    "ATHERENERG",
     "ACUTAAS",
     "AETHER",
     "RATNAVEER",
-    "FEDERALBNK"
+    "WHEELS"
   ],
   "sessions_added_this_run": [
-    "2026-11-04"
+    "2026-11-05"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33890,
-  "reference_names_known": 2628,
-  "isin_lineage_added": [],
+  "corporate_action_events_known": 33900,
+  "reference_names_known": 2631,
+  "isin_lineage_added": [
+    {
+      "Symbol": "GNRL",
+      "OldISIN": "INE207H01018",
+      "NewISIN": "INE207H01026",
+      "OldLast": "2026-11-04",
+      "NewFirst": "2026-11-05",
+      "GapDays": 1,
+      "CanonicalISIN": "INE207H01018"
+    }
+  ],
   "isin_lineage_unresolved": []
 }
