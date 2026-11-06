@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-05",
-  "generated_at_utc": "2026-11-05T11:08:45+00:00",
+  "as_of_session": "2026-11-06",
+  "generated_at_utc": "2026-11-06T11:09:00+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 671,
@@ -13,36 +13,36 @@
     "LAURUSLABS",
     "SANSERA",
     "WELCORP",
+    "RUBICON",
     "CPPLUS",
     "SHILPAMED",
-    "RUBICON",
     "SGMART",
-    "RPTECH",
-    "SKYGOLD",
-    "SSWL",
     "SONACOMS",
-    "RPEL",
+    "SKYGOLD",
+    "RPTECH",
     "ATHERENERG",
-    "ACUTAAS",
-    "AETHER",
     "RATNAVEER",
-    "WHEELS"
+    "AETHER",
+    "ACUTAAS",
+    "RPEL",
+    "MBAPL",
+    "SSWL"
   ],
   "sessions_added_this_run": [
-    "2026-11-05"
+    "2026-11-06"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33900,
-  "reference_names_known": 2631,
+  "corporate_action_events_known": 33922,
+  "reference_names_known": 2632,
   "isin_lineage_added": [
     {
-      "Symbol": "GNRL",
-      "OldISIN": "INE207H01018",
-      "NewISIN": "INE207H01026",
-      "OldLast": "2026-11-04",
-      "NewFirst": "2026-11-05",
+      "Symbol": "KMEW",
+      "OldISIN": "INE0CJD01029",
+      "NewISIN": "INE0CJD01037",
+      "OldLast": "2026-11-05",
+      "NewFirst": "2026-11-06",
       "GapDays": 1,
-      "CanonicalISIN": "INE207H01018"
+      "CanonicalISIN": "INE0CJD01011"
     }
   ],
   "isin_lineage_unresolved": []
