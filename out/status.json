@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-06",
-  "generated_at_utc": "2026-11-06T11:09:00+00:00",
+  "as_of_session": "2026-11-09",
+  "generated_at_utc": "2026-11-09T13:54:14+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 671,
@@ -11,39 +11,32 @@
     "SHREEJISPG",
     "GCSL",
     "LAURUSLABS",
-    "SANSERA",
-    "WELCORP",
     "RUBICON",
+    "SANSERA",
     "CPPLUS",
-    "SHILPAMED",
     "SGMART",
-    "SONACOMS",
-    "SKYGOLD",
-    "RPTECH",
+    "WELCORP",
+    "SHILPAMED",
+    "MBAPL",
     "ATHERENERG",
+    "KRISHANA",
+    "RPTECH",
     "RATNAVEER",
-    "AETHER",
     "ACUTAAS",
     "RPEL",
-    "MBAPL",
-    "SSWL"
+    "SSWL",
+    "SKYGOLD",
+    "SONACOMS"
   ],
   "sessions_added_this_run": [
-    "2026-11-06"
+    "2026-11-08",
+    "2026-11-09"
   ],
-  "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33922,
-  "reference_names_known": 2632,
-  "isin_lineage_added": [
-    {
-      "Symbol": "KMEW",
-      "OldISIN": "INE0CJD01029",
-      "NewISIN": "INE0CJD01037",
-      "OldLast": "2026-11-05",
-      "NewFirst": "2026-11-06",
-      "GapDays": 1,
-      "CanonicalISIN": "INE0CJD01011"
-    }
+  "holidays_or_unpublished": [
+    "2026-11-07"
   ],
+  "corporate_action_events_known": 33928,
+  "reference_names_known": 2646,
+  "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
