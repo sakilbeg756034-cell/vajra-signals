@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-12",
-  "generated_at_utc": "2026-11-12T11:59:03+00:00",
+  "as_of_session": "2026-11-13",
+  "generated_at_utc": "2026-11-13T11:11:07+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 671,
@@ -11,28 +11,28 @@
     "SHREEJISPG",
     "GCSL",
     "LAURUSLABS",
-    "SANSERA",
     "CPPLUS",
+    "SANSERA",
     "RUBICON",
-    "SGMART",
-    "WELCORP",
-    "MBAPL",
     "SHILPAMED",
+    "MBAPL",
     "SKYGOLD",
     "KRISHANA",
-    "RPTECH",
-    "WHEELS",
     "ATHERENERG",
-    "RATNAVEER",
-    "SONACOMS",
+    "SGMART",
+    "WELCORP",
+    "WHEELS",
     "RPEL",
-    "SSWL"
+    "ANANDRATHI",
+    "RATNAVEER",
+    "SSWL",
+    "SONACOMS"
   ],
   "sessions_added_this_run": [
-    "2026-11-12"
+    "2026-11-13"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 33960,
+  "corporate_action_events_known": 33985,
   "reference_names_known": 2636,
   "isin_lineage_added": [],
   "isin_lineage_unresolved": []
