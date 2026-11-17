@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-16",
-  "generated_at_utc": "2026-11-16T13:38:58+00:00",
+  "as_of_session": "2026-11-17",
+  "generated_at_utc": "2026-11-17T11:05:58+00:00",
   "built_by": "github-actions",
   "universe_rows": 747,
   "eligible": 671,
@@ -8,45 +8,32 @@
   "exit_rank": 50,
   "top_symbols": [
     "SBC",
-    "GCSL",
     "SHREEJISPG",
+    "GCSL",
     "CPPLUS",
     "LAURUSLABS",
     "SANSERA",
     "RUBICON",
-    "MBAPL",
-    "SHILPAMED",
     "SGMART",
+    "SHILPAMED",
+    "MBAPL",
+    "ATHERENERG",
     "KRISHANA",
     "SKYGOLD",
-    "ATHERENERG",
-    "WELCORP",
-    "SSWL",
-    "RPEL",
-    "RATNAVEER",
-    "TFCILTD",
     "WHEELS",
-    "ACUTAAS"
+    "SSWL",
+    "SONACOMS",
+    "RPEL",
+    "DIVISLAB",
+    "TFCILTD",
+    "RATNAVEER"
   ],
   "sessions_added_this_run": [
-    "2026-11-16"
+    "2026-11-17"
   ],
-  "holidays_or_unpublished": [
-    "2026-11-14",
-    "2026-11-15"
-  ],
-  "corporate_action_events_known": 33988,
-  "reference_names_known": 2647,
-  "isin_lineage_added": [
-    {
-      "Symbol": "BNAGROCHEM",
-      "OldISIN": "INE00HZ01011",
-      "NewISIN": "INE00HZ01029",
-      "OldLast": "2026-11-13",
-      "NewFirst": "2026-11-16",
-      "GapDays": 3,
-      "CanonicalISIN": "INE00HZ01011"
-    }
-  ],
+  "holidays_or_unpublished": [],
+  "corporate_action_events_known": 33992,
+  "reference_names_known": 2634,
+  "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
