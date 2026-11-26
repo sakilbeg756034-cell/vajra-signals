@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-25",
-  "generated_at_utc": "2026-11-25T11:17:09+00:00",
+  "as_of_session": "2026-11-26",
+  "generated_at_utc": "2026-11-26T11:05:30+00:00",
   "built_by": "github-actions",
   "universe_rows": 746,
   "eligible": 670,
@@ -9,33 +9,31 @@
   "top_symbols": [
     "SBC",
     "SHREEJISPG",
-    "GCSL",
     "SANSERA",
-    "ATHERENERG",
     "LAURUSLABS",
-    "RUBICON",
+    "GCSL",
     "SGMART",
+    "ATHERENERG",
+    "RUBICON",
     "CPPLUS",
     "MBAPL",
-    "SKYGOLD",
     "KRISHANA",
+    "PAISALO",
+    "SKYGOLD",
     "WELCORP",
-    "SHILPAMED",
     "SSWL",
-    "WHEELS",
+    "SHILPAMED",
     "AETHER",
-    "KTKBANK",
+    "WHEELS",
     "TFCILTD",
     "ANANDRATHI"
   ],
   "sessions_added_this_run": [
-    "2026-11-25"
+    "2026-11-26"
   ],
-  "holidays_or_unpublished": [
-    "2026-11-24"
-  ],
+  "holidays_or_unpublished": [],
   "corporate_action_events_known": 34022,
-  "reference_names_known": 2633,
+  "reference_names_known": 2635,
   "isin_lineage_added": [],
   "isin_lineage_unresolved": []
 }
