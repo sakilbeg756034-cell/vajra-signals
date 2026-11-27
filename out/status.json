@@ -1,6 +1,6 @@
 {
-  "as_of_session": "2026-11-26",
-  "generated_at_utc": "2026-11-26T11:05:30+00:00",
+  "as_of_session": "2026-11-27",
+  "generated_at_utc": "2026-11-27T11:08:31+00:00",
   "built_by": "github-actions",
   "universe_rows": 746,
   "eligible": 670,
@@ -10,30 +10,40 @@
     "SBC",
     "SHREEJISPG",
     "SANSERA",
-    "LAURUSLABS",
-    "GCSL",
-    "SGMART",
     "ATHERENERG",
+    "GCSL",
+    "LAURUSLABS",
     "RUBICON",
     "CPPLUS",
+    "SGMART",
     "MBAPL",
-    "KRISHANA",
-    "PAISALO",
+    "SSWL",
     "SKYGOLD",
     "WELCORP",
-    "SSWL",
-    "SHILPAMED",
+    "KRISHANA",
     "AETHER",
-    "WHEELS",
+    "PAISALO",
     "TFCILTD",
-    "ANANDRATHI"
+    "SHILPAMED",
+    "ACUTAAS",
+    "WHEELS"
   ],
   "sessions_added_this_run": [
-    "2026-11-26"
+    "2026-11-27"
   ],
   "holidays_or_unpublished": [],
-  "corporate_action_events_known": 34022,
-  "reference_names_known": 2635,
-  "isin_lineage_added": [],
+  "corporate_action_events_known": 34024,
+  "reference_names_known": 2637,
+  "isin_lineage_added": [
+    {
+      "Symbol": "VGL",
+      "OldISIN": "INE273D01027",
+      "NewISIN": "INE273D01035",
+      "OldLast": "2026-11-26",
+      "NewFirst": "2026-11-27",
+      "GapDays": 1,
+      "CanonicalISIN": "INE273D01019"
+    }
+  ],
   "isin_lineage_unresolved": []
 }
